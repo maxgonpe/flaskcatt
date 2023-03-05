@@ -1,0 +1,90 @@
+
+En primer lugar, necesitas incluir el siguiente código en la sección head de tu plantilla HTML para definir el viewport y los estilos iniciales para dispositivos móviles:
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile-First Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}" media="screen and (max-width: 767px)">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop.css') }}" media="screen and (min-width: 768px)">
+</head>
+
+*css1
+
+En el archivo mobile.css, puedes definir los estilos para dispositivos móviles, como por ejemplo:
+
+body {
+    font-size: 16px;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+
+css2*
+
+En el archivo desktop.css, puedes definir los estilos para dispositivos de escritorio, como por ejemplo:
+
+body {
+    font-size: 18px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+p {
+    font-size: 1.4rem;
+}
+
+En este ejemplo, el tamaño de fuente base se define para dispositivos móviles y se ajusta según el tamaño de la pantalla. Para tabletas, se aumenta el tamaño de fuente a 18px cuando el ancho de la pantalla es de al menos 768px. Para pantallas de escritorio, se aumenta el tamaño de fuente a 20px cuando el ancho de la pantalla es de al menos 992px. Y para pantallas grandes, se aumenta el tamaño de fuente a 22px cuando el ancho de la pantalla es de al menos 1200px.
+
+Este es solo un ejemplo básico, pero se pueden definir otros estilos para adaptarse a las dimensiones específicas de una tableta.
+
+
+/* Estilo base para dispositivos móviles */
+
+body {
+  font-size: 16px;
+}
+
+/* Estilo para tabletas */
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Estilo para pantallas de escritorio */
+
+@media (min-width: 992px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+/* Estilo para pantallas grandes */
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+
+entonces al usar este estilo "mobile-first"  diseño mi web y me limito a las dimensiones del mobil, luego si uso esta web en otros 
+dispositivos lo que sucederà en que las fuentes y ciertos espacion se aumentaran para llenar las pantallas???  entendi bien?
+Sí, es correcto. Al diseñar con el enfoque "mobile-first", se parte de un diseño inicial enfocado en dispositivos móviles y luego se
+adapta a resoluciones mayores para otros dispositivos. Esto implica que los elementos visuales y de diseño estarán optimizados para su
+visualización en pantallas más pequeñas, y cuando se visualice en pantallas más grandes, los elementos se adaptarán para llenar el espacio 
+disponible y mantener una apariencia coherente. Esto se logra utilizando medidas de diseño responsivas, como el uso de porcentajes en lugar
+de valores fijos de píxeles para definir tamaños de elementos, lo que permite que los elementos se adapten a diferentes tamaños de pantalla.
