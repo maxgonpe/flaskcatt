@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+      <h1>Mantenimientos &nbsp;&nbsp;<a class="btn btn-success btn-sm" href="{{ url_for('agregar_mantenimiento') }}">Nuevo</a></h1>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Equipo</th>
+            <th scope="col">Área</th>
+            <th scope="col">Actividades</th>
+            <th scope="col">Frecuencia</th>
+            <th scope="col">Responsable</th>
+            <th scope="col">Meses</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for mantenimiento in mantenimientos %}
+          <tr>
+            <td>{{ mantenimiento.equipo }}</td>
+            <td>{{ mantenimiento.area }}</td>
+            <td>{{ mantenimiento.actividades }}</td>
+            <td>{{ mantenimiento.frecuencia }}</td>
+            <td>{{ mantenimiento.responsable }}</td>
+            <td>{{ mantenimiento.meses }}</td>
+            <td>
+                <form action="{{ url_for('eliminar_mantenimiento', id=mantenimiento._id) }}" method="post">
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+            </td>
+            <td>
+                <a href="{{ url_for('editar_mantenimiento', id=mantenimiento._id) }}" class="btn btn-primary btn-sm">Editar</a>
+            </td>
+           </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        
+{% endblock %}      
+<td>
+    <form action="{{ url_for('eliminar_mantenimiento', id=mantenimiento._id) }}" method="post">
+      <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+    </form>
+  </td>
